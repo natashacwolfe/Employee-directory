@@ -14,7 +14,6 @@ function Table(props) {
                 </tr>
             </thead>
             <tbody>
-            <row />
             </tbody>
         </table>
     )

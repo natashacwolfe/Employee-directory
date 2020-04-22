@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import API from './utils/API'
 import Wrapper from './components/Wrapper';
-// import Table from './components/Table';
-// import Row from './components/Row';
-// import { render } from '@testing-library/react';
+import Table from './components/Table';
+import Row from './components/Row';
+import { render } from '@testing-library/react';
 
 class Employee extends Component {
 state = {
@@ -11,19 +11,15 @@ state = {
 };
 
     componentDidMount() {
+   console.log("Wahoo!")
+    };
+
+    searchRandomUser() {
         API.generateUsers()
-        .then(res => {
-            this.setState({ results: res.data.results});
-            console.log(res.data.results)
-            // let employeesArr = results.map(employee => {
-            //     setId(employee.id);
-            //     setName(`${employee.name.first} ${employee.name.last}`);
-            //     setEmail(employee.email);
-            //     setPhone(employee.phone);
-            //     setLocation(`${employee.location.city} ${employee.location.state} ${employee.location.country}`);
-                
-            // }) 
-           
+        .then((res) => {
+            this.setState({ results: res.data.results})
+            console.log(this.state);
+            
         })
         .catch(err => console.log(err));
     };
@@ -32,6 +28,9 @@ render(){
       return (
         <div>
         <Wrapper>
+        <Table>
+        <Row results={this.state.results} />
+        </Table>
         </Wrapper>
         </div>
     );
