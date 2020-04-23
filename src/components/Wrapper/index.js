@@ -1,7 +1,12 @@
 import React from "react";
+import Table from "../Table"
 
 function Wrapper(props) {
-  return <div className="container-fluid" {...props} />
+  console.log(props)
+  let results = props.results
+  return <div className="container-fluid">
+    <Table results={results} />
+  </div>
   
 };
 

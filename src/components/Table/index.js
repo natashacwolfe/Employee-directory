@@ -1,6 +1,8 @@
 import React from "react";
+import Row from '../Row'
 
-function Table(props) {
+function Table(results) {
+    console.log(results, "@@")
     return (
         <table className="table">
             <thead className="thead-light">
@@ -14,6 +16,7 @@ function Table(props) {
                 </tr>
             </thead>
             <tbody>
+         <Row results={results} />
             </tbody>
         </table>
     )
