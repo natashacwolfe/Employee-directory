@@ -27,7 +27,7 @@ generateRandomUsers() {
 render() {
     return (
         <div>
-            <Wrapper>
+            <Wrapper results={this.state.results}>
         
             </Wrapper>
         </div>
