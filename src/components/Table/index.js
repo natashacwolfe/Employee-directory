@@ -1,8 +1,10 @@
 import React from "react";
 import Row from '../Row'
 
-function Table(results) {
-    console.log(results, "@@")
+function Table({ results }) {
+    console.log(results, "table")
+    
+    
     return (
         <table className="table">
             <thead className="thead-light">
