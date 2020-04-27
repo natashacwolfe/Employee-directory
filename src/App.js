@@ -6,47 +6,39 @@ import Wrapper from './components/Wrapper';
 import './App.css';
 
 class App extends Component {
-  state = {
-    results: []
-};
-
-componentDidMount() {
-   this.generateRandomUsers();
-   console.log(this.state, "state")
-};
-
-generateRandomUsers() {
-  API.generateUsers()
-.then((res) => {
-    this.setState({ results: [res.data.results] })
-    console.log(this.state, "app");
-    this.state.results.map((result) => {
-        return console.log(result[0].email, "app")
-    })
-})
-.catch(err => console.log(err));
-};
+    state = {
+        results: [],
+        currentSort: 'default',
+    };
 
 
-render() {
-    return (
-        <div>
-            <Wrapper results={this.state.results}>
-            </Wrapper>
-        </div>
-    );
-};
+    componentDidMount = () => {
+        this.generateRandomUsers();
+    };
+
   
+    generateRandomUsers = () => {
+        API.generateUsers()
+            .then((res) => this.setState({ results: res.data.results }))
+            .catch(err => console.log(err));
+    };
+
+    handleInputChange = () => {
+        let sortedUsers = this.state.results.sort((a,b) => (a.email > b.email) ? 1 : -1)
+        this.setState({ results: sortedUsers})
+    };
+      
+    render() {
+        return (
+            <div>
+                <Wrapper
+                    results={this.state.results}
+                    handleInputChange={this.handleInputChange}
+                />
+            </div>
+        );
+    };
+
 };
-    // <Table>
-    //         {this.state.results.map((result, index) => (
-    //           <Row 
-    //           key={index}
-    //           id={index}
-    //           first={result.name.first}
-    //           last={result.name.last}
-    //           email={result.email}
-    //           />
-    //           ))}
-    //           </Table>
+
 export default App;

@@ -1,9 +1,9 @@
 import React from "react";
 import Row from '../Row'
 
-function Table({ results }) {
-    console.log(results, "table")
-    
+function Table(props) {
+    console.log(props, "table")
+ 
     
     return (
         <table className="table">
@@ -12,14 +12,15 @@ function Table({ results }) {
                     <th scope="col">#</th>
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
-                    <th scope="col">Email</th>
+                    <th scope="col"> <button type="button" 
+                    onClick={() => props.handleInputChange('email', props.currentSort)}>
+                    Email
+                    </button></th>
                     <th scope="col">Phone</th>
                     <th scope="col">Location</th>
                 </tr>
             </thead>
-            <tbody>
-         <Row results={results} />
-            </tbody>
+         <Row {...props} />
         </table>
     )
 };

@@ -1,32 +1,25 @@
 import React from "react";
 import "./style.css";
 
-function Row({ results }) {
-    console.log(results, results[0], "row")
-    // let employees = results[0];
-
+function Row(props) {
+    console.log(props.sortType, props.currentSort, "row")
+    let results = props.results
     return (
-        <tr>
-            {results.map((employee, index) => (
-                    <th scope="row" key={index}>{employee.email}</th>
+        <tbody>
+            {[...results].map((result, index) => (
+                <tr  key={result.email}>
+                    <th scope="row" >{index}</th>
+                    <td>{result.name.first}</td>
+                    <td>{result.name.last}</td>
+                    <td>{result.email}</td>
+                    <td>{result.phone}</td>
+                    <td>{result.location.city}, {result.location.state}, {result.location.country}</td>  
+                </tr>
             ))}
-        </tr>
+      </tbody>
     );
 };
 
 
-
-// <div>
-//     {results.map((result, index) => (
-//         <tr key={index}>
-//             <th scope="row">
-//                 
-//                 <td>{result.name.late}</td>
-//                 <td>{result.email}</td>
-//                 <td>{result.phone}</td>
-//                 <td>{result.location.city}{result.location.state}{result.location.country}</td>
-//             </th>
-//         </tr>
-//     ))}
-// </div>
+// .sort(props.sortTypes[props.currentSort].fn)
 export default Row;
