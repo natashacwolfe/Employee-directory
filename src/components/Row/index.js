@@ -20,6 +20,4 @@ function Row(props) {
     );
 };
 
-
-// .sort(props.sortTypes[props.currentSort].fn)
 export default Row;

@@ -8,15 +8,12 @@ import './App.css';
 class App extends Component {
     state = {
         results: [],
-        currentSort: 'default',
     };
-
 
     componentDidMount = () => {
         this.generateRandomUsers();
     };
 
-  
     generateRandomUsers = () => {
         API.generateUsers()
             .then((res) => this.setState({ results: res.data.results }))
