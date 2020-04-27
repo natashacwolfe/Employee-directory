@@ -8,6 +8,7 @@ import './App.css';
 class App extends Component {
     state = {
         results: [],
+        sortedField: ""
     };
 
     componentDidMount = () => {
@@ -20,17 +21,38 @@ class App extends Component {
             .catch(err => console.log(err));
     };
 
-    handleInputChange = () => {
-        let sortedUsers = this.state.results.sort((a,b) => (a.email > b.email) ? 1 : -1)
-        this.setState({ results: sortedUsers})
+    handleInputChange = (sortedField) => {
+        this.setState({ sortedField: sortedField })
+        this.sort(sortedField)
     };
-      
+
+    sort = (sortedField) => {
+        let sortedUsers = [];
+        switch (sortedField) {
+            case "first":
+                sortedUsers = this.state.results.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1);
+                return this.setState({ results: sortedUsers });
+            case "last":
+                sortedUsers = this.state.results.sort((a, b) => (a.name.last > b.name.last) ? 1 : -1);
+                return this.setState({ results: sortedUsers });
+            case "email":
+                sortedUsers = this.state.results.sort((a, b) => (a.email > b.email) ? 1 : -1);
+                return this.setState({ results: sortedUsers });
+            case "location":
+                sortedUsers = this.state.results.sort((a, b) => (a.location.city > b.location.city) ? 1 : -1);
+                return this.setState({ results: sortedUsers });
+            default:
+                break;
+        };
+    };
+
     render() {
         return (
             <div>
                 <Wrapper
                     results={this.state.results}
                     handleInputChange={this.handleInputChange}
+                    sortedField={this.state.sortedField}
                 />
             </div>
         );

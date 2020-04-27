@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 function Row(props) {
-    console.log(props.sortType, props.currentSort, "row")
     let results = props.results
     return (
         <tbody>
