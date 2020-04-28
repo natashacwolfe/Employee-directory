@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 
 function Row(props) {
     let results = props.results

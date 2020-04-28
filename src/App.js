@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import API from './utils/API'
 import Wrapper from './components/Wrapper';
-// import Table from './components/Table';
-// import Row from './components/Row';
-import './App.css';
 
 class App extends Component {
     state = {
